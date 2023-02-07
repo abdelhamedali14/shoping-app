@@ -1,0 +1,14 @@
+.table {
+    width: 90%;
+    margin: 0 auto;
+}
+.img-cart {
+    width: 100%;
+    object-fit: contain;
+}
+
+.img_wrapper{
+    width: 4rem;
+    height: 4rem;
+
+}

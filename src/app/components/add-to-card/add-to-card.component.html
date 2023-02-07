@@ -1,0 +1,73 @@
+<div
+  *ngIf="displayAllProduct.length==0"
+  class=" vh-100 w-100 d-flex justify-content-center align-items-center flex-column "
+>
+  <img src="../../../assets/Add to Cart-amico.svg" alt="" class="w-25" />
+  <h2>you can order now from  <a routerLink="">here</a></h2>
+</div>
+<div *ngIf="displayAllProduct.length>0 ">
+  <div class="cart_box container mt-5">
+    <div class="head_wrapper text-center ">
+      <h2 class="text-info fs-1 py-2">shopping cart</h2>
+    </div>
+    <table class="table table-light table-striped ">
+      <thead class="fs-6 fw-bold">
+        <tr>
+          <th scope="col">item number</th>
+          <th scope="col">product image</th>
+          <th scope="col">price</th>
+          <th scope="col">Total</th>
+          <th scope="col" class="mx-2">Quantity</th>
+          <th scope="col">delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of displayAllProduct let index=index">
+          <th scope="row">{{item.name}}</th>
+          <td>
+            <div class="img_wrapper">
+              <img [src]="item.image" alt="" class="img-cart" />
+            </div>
+          </td>
+          <td class="fw-bold fs-5">{{item.price}} LE</td>
+          <td class="fw-bold fs-5">{{+item.price*item.quantinty}}LE</td>
+          <td>
+            <div class="Quanttity d-flex align-items-center ">
+              <button
+                class="rounded-circle fw-bold  btn btn-outline-danger fs-5 "
+                (click)=" decreaseCounter(index)"
+                [disabled]="item.quantinty===1"
+              >
+                <fa-icon [icon]="faCircleMinus"> </fa-icon>
+              </button>
+              <span class="fs-6 fw-bold mx-2">{{item.quantinty}}</span>
+              <button
+                class="rounded-circle fw-bold   btn btn-outline-danger fs-5"
+                (click)="increaseCounter(index)"
+                [disabled]="item.quantinty===item.count"
+              >
+                <fa-icon [icon]="faCirclePlus  "> </fa-icon>
+              </button>
+            </div>
+          </td>
+          <td class="">
+            <button
+              type="button"
+              class="btn btn-danger "
+              (click)="deleteProduct(index)"
+            >
+              <fa-icon [icon]="faTrashCan"> </fa-icon>
+              <span class="badge text-bg-secondary ms-4"></span>
+            </button>
+          </td>
+        </tr>
+        <th>
+          <div class="d-flex  mt-5 align-items-center">
+            <p class="fw-bold fs-4">total is :{{total}}</p>
+            <button class="btn btn-primary mx-3">order now</button>
+          </div>
+        </th>
+      </tbody>
+    </table>
+  </div>
+</div>

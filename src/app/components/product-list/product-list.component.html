@@ -1,0 +1,20 @@
+
+<div class="container py-5" >
+    <div class="row ">
+        <div class="col-md-9">
+        <div class="productlis_wrapper d-flex flex-wrap justify-content-between">
+          <div *ngFor="let product of productList" class="col-md-4 px-2">
+            <div class="item"><app-product [product]="product"></app-product></div>
+          </div>
+        </div>
+        </div>
+        <div class="col-md-3">
+          <app-wishlist></app-wishlist>
+        </div>
+      </div>
+   
+      
+</div>
+
+
+

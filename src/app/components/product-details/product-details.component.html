@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row mt-5 justify-content-center">
+    <div class="col-md-6 ">
+      <div class="card  my-3 rounded-4 shadow p-3  text-center d-flex">
+        <div>
+          <img
+            src="{{detailsOfProduct.image}}"
+            class="card-img-top w-50"
+            alt="..."
+          />
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{detailsOfProduct.name}}</h5>
+          <!-- <p class="card-text">{{detailsOfProduct.description}}</p> -->
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item fw-bold">
+            {{ detailsOfProduct.price | currency: "EG":"code":"":"fr" }}
+          </li>
+          <!-- <li class="list-group-item">{{detailsOfProduct.rate}}</li> -->
+          <li> <div *ngIf="detailsOfProduct.count > 0; then inStock; else outOfStock"></div>
+            <ng-template #inStock>
+              <span class="text-success fw-bold fs-5 p-2">instock</span></ng-template
+            >
+            <ng-template #outOfStock
+              ><span class="text-danger fw-bold p-2">outOfStock</span></ng-template
+            ></li>
+        </ul>
+        <div class="card-body">
+          <button class="btn btn-primary" (click)="addToCart()">add to card</button>
+          <a (click)=" addtoWishList()">
+            <i class="fa-regular fa-star  text-danger fs-3"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

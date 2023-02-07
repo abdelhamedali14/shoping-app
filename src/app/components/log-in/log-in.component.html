@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="w-75 m-auto mt-5 py-5 shadow-lg p-5 login-window">
+    <h2 class="text-center text-info head-caption">Login</h2>
+    <form #loginForm="ngForm" (ngSubmit)="handelLogInForm(loginForm)">
+      <div>
+        <label for="emialValue" class="form-label ">email</label>
+        <input
+          id="emialValue"
+          type="email"
+          name="emialValue"
+          #emialValue="ngModel"
+          ngModel
+          required
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$"
+          class="form-control bg-transparent my-1"
+          placeholder="enter your email"
+        />
+
+
+
+        <div
+          id="emailHelp"
+          *ngIf="emialValue.errors && emialValue.errors['pattern']"
+          class="form-text text-danger"
+        >
+        invalid email
+        </div>
+
+
+
+        
+        <div
+          *ngIf="
+            (emialValue.touched && !emialValue.valid) ||
+            (loginForm.submitted && !emialValue.valid)
+          "
+        >
+          <div
+            id="emailHelp"
+            *ngIf="emialValue.errors && emialValue.errors['required']"
+            class="form-text text-danger"
+          >
+            This field is required
+          </div>
+        </div>
+
+
+        
+        <label for="passwordValue">password</label>
+        <input
+          id="passwordValue"
+          type="password"
+          name="passwordValue"
+          #passwordValue="ngModel"
+          ngModel
+          required
+          name="passwordValue"
+          class="form-control bg-transparent my-1"
+          placeholder="enter your password"
+          minlength="10"
+        />
+        <div
+        id="passwordHelp"
+        *ngIf="passwordValue.errors && passwordValue.errors['minlength']"
+        class="form-text text-danger"
+      >
+        Min. length is 10 characters
+      </div>
+
+      <div
+      *ngIf="
+        (passwordValue.touched && !passwordValue.valid) ||
+        (loginForm.submitted && !passwordValue.valid)
+      "
+    >
+      <div
+        id="emailHelp"
+        *ngIf="passwordValue.errors && passwordValue.errors['required']"
+        class="form-text text-danger"
+      >
+        This field is required
+      </div>
+    </div>
+
+
+        <button
+          id="logInBtn"
+          class="form-control my-4 btn btn-outline-info"
+          type="submit"
+        >
+          log in
+        </button>
+      </div>
+    </form>
+    <p class="text-center text-black fw-bold">
+      Don’t have account
+      <a routerLink="/register" class="text-black">? Register</a>
+    </p>
+  </div>
+</div>

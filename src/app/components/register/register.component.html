@@ -1,0 +1,161 @@
+<div class="container">
+  <h2 class="text-center text-info pt-3">register</h2>
+  <div class="w-50 m-auto mt-3 py-5 shadow-lg p-5 login-window">
+    <form
+      action=""
+      [formGroup]="registerForm"
+      (ngSubmit)="handelRegisterForm()"
+    >
+      <label for="nameSignUp">name</label>
+      <input
+        id="nameSignUp"
+        type="text"
+        class="form-control my-1 bg-transparent"
+        placeholder="enter your name"
+        formControlName="userName"
+      />
+      <div
+        *ngIf="
+        (FormControls['userName'].touched && !FormControls['userName'].valid) "
+      >
+        <div
+          id="emailHelp"
+          *ngIf="FormControls['userName'].errors && FormControls['userName'].errors['required']"
+          class="form-text text-danger"
+        >
+          This field is required
+        </div>
+      </div>
+
+      <label for="emailSignUp">email</label>
+      <input
+        id="emailSignUp"
+        type="email"
+        class="form-control bg-transparent "
+        placeholder="enter your email"
+        formControlName="userEmail"
+      />
+      <div
+        id="emailHelp"
+        *ngIf="FormControls['userEmail'].errors && FormControls['userEmail'].errors['pattern']"
+        class="form-text text-danger"
+      >
+        invalid email
+      </div>
+      <div
+        *ngIf="
+        (FormControls['userEmail'].touched && !FormControls['userEmail'].valid) 
+      "
+      >
+        <div
+          id="emailHelp"
+          *ngIf="FormControls['userEmail'].errors && FormControls['userEmail'].errors['required']"
+          class="form-text text-danger"
+        >
+          This field is required
+        </div>
+      </div>
+      <label for="nameSignUp">userName</label>
+      <input
+        id="nameSignUp"
+        type="text"
+        class="form-control my-1 bg-transparent"
+        placeholder="enter your useName"
+        formControlName="userUserName"
+      />
+      <div
+        id="emailHelp"
+        *ngIf="FormControls['userUserName'].errors && FormControls['userUserName'].errors['pattern']"
+        class="form-text text-danger"
+      >
+        username should'nt have space
+      </div>
+      <div
+        *ngIf="
+      (FormControls['userUserName'].touched && !FormControls['userUserName'].valid) 
+    "
+      >
+        <div
+          id="emailHelp"
+          *ngIf="FormControls['userUserName'].errors && FormControls['userUserName'].errors['required']"
+          class="form-text text-danger"
+        >
+          This field is required
+        </div>
+      </div>
+      <label for="emailSignUp">password</label>
+      <input
+        id="passwordSignUp"
+        type="password"
+        class="form-control bg-transparent my-1 "
+        placeholder="enter your password"
+        formControlName="registerPassword"
+      />
+      <div
+        id="emailHelp"
+        *ngIf="FormControls['registerPassword'].errors && FormControls['registerPassword'].errors['pattern']"
+        class="form-text text-danger"
+      >
+        invalid password
+
+        <ul class="text-secondary">
+          password should contain
+          <li>password length not less than 8 characters</li>
+          <li>contains at least one lowercase one uppercase</li>
+          <li>at least one digit and special character</li>
+        </ul>
+      </div>
+
+      <div
+        *ngIf="
+      (FormControls['registerPassword'].touched && !FormControls['registerPassword'].valid) 
+    "
+      >
+        <div
+          id="emailHelp"
+          *ngIf="FormControls['registerPassword'].errors && FormControls['registerPassword'].errors['required']"
+          class="form-text text-danger"
+        >
+          This field is required
+        </div>
+      </div>
+      <label for="emailSignUp">confirm password</label>
+      <input
+        id="passwordSignUp"
+        type="password"
+        class="form-control bg-transparent my-1 "
+        placeholder="confirm your password"
+        formControlName="confirmRegisterPassword"
+      />
+      <div class="text-danger" *ngIf="registerForm.errors && registerForm.errors['mismatch']">
+        Passwords don't match.
+      </div>
+      <div
+        *ngIf="
+      (FormControls['confirmRegisterPassword'].touched && !FormControls['confirmRegisterPassword'].valid) 
+    "
+      >
+        <div
+          id="emailHelp"
+          *ngIf="FormControls['confirmRegisterPassword'].errors && FormControls['confirmRegisterPassword'].errors['required']"
+          class="form-text text-danger"
+        >
+          This field is required
+        </div>
+      </div>
+
+      <button
+        class="form-control my-4 btn btn-outline-info"
+        id="logInBtn"
+        type="submit"
+        [disabled]="!registerForm.valid"
+      >
+        sign up
+      </button>
+    </form>
+    <p class="text-center text-dark fw-bold">
+      You have an account?
+      <a routerLink="/logIn" class="text-black fw-bold"> Sign in</a>
+    </p>
+  </div>
+</div>
